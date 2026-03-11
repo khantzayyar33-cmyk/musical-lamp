@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayinnaung369 Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Noto+Sans+Myanmar:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#D4AF37;--gold-light:#F5D98B;--gold-dark:#9A7B1E;
+  --black:#06060A;--dark:#0E0E15;--dark2:#14141E;--dark3:#1C1C2A;
+  --white:#F0EBE0;--muted:#6B6B82;
+  --tik:#00F2EA;--tik2:#FF0050;--tik-dark:#007A76;
+  --orange:#FF6B35;--orange-light:#FF9A6C;--orange-dark:#CC4A10;
+  --purple:#A78BFF;--purple-dark:#5B4A9A;
+  --glass:rgba(255,255,255,0.03);
+  --border:rgba(212,175,55,0.12);
+  --radius:12px;--radius-sm:8px;--radius-xs:4px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Noto Sans Myanmar',sans-serif;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased;}
+.cursor{width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s;}
+.cursor-f{width:28px;height:28px;border:1.5px solid rgba(212,175,55,0.5);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.15s cubic-bezier(0.23,1,0.32,1);opacity:0.6;}
+
+/* ========== HERO ========== */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 24px 60px;text-align:center;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 30%,rgba(167,139,255,0.08) 0%,transparent 55%),radial-gradient(ellipse 50% 50% at 15% 85%,rgba(212,175,55,0.09) 0%,transparent 50%),radial-gradient(ellipse 40% 40% at 85% 15%,rgba(0,242,234,0.05) 0%,transparent 50%),radial-gradient(ellipse 30% 30% at 70% 70%,rgba(255,107,53,0.04) 0%,transparent 50%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.018) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
+.hero-content{position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(212,175,55,0.25);padding:8px 20px;border-radius:100px;font-size:0.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold-light);margin-bottom:28px;background:linear-gradient(135deg,rgba(212,175,55,0.06),rgba(212,175,55,0.02));backdrop-filter:blur(8px);animation:fadeDown 0.8s ease forwards;box-shadow:0 0 20px rgba(212,175,55,0.05),inset 0 1px 0 rgba(212,175,55,0.1);}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2.4rem,8vw,5rem);line-height:1.05;animation:fadeUp 1s ease 0.2s both;}
+.l1{background:linear-gradient(135deg,var(--white),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;}
+.l2{background:linear-gradient(135deg,var(--gold),var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;font-size:0.5em;letter-spacing:10px;margin-top:4px;}
+.hero-sub{font-size:0.88rem;color:var(--muted);margin:18px 0 36px;line-height:1.8;animation:fadeUp 1s ease 0.4s both;}
+.hero-sub span{color:var(--gold-light);}
+.tab-buttons{display:flex;flex-direction:column;gap:14px;width:100%;max-width:320px;animation:fadeUp 1s ease 0.6s both;}
+.tab-btn{display:flex;align-items:center;justify-content:center;gap:12px;padding:17px 28px;border:none;border-radius:14px;font-family:'Noto Sans Myanmar',sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:1.5px;text-transform:uppercase;cursor:none;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;}
+.tab-btn:hover{transform:translateY(-4px) scale(1.02);}
+.tab-btn-mlbb{background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));color:var(--black);box-shadow:0 8px 32px rgba(212,175,55,0.25),0 0 0 1px rgba(212,175,55,0.1);}
+.tab-btn-mlbb:hover{box-shadow:0 12px 40px rgba(212,175,55,0.4),0 0 60px rgba(212,175,55,0.15);}
+.tab-btn-tik{background:linear-gradient(135deg,var(--tik-dark),var(--tik));color:var(--black);box-shadow:0 8px 32px rgba(0,242,234,0.2),0 0 0 1px rgba(0,242,234,0.1);}
+.tab-btn-tik:hover{box-shadow:0 0 50px rgba(0,242,234,0.4);}
+.tab-btn-digital{background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:white;box-shadow:0 8px 32px rgba(167,139,255,0.2),0 0 0 1px rgba(167,139,255,0.1);}
+.tab-btn-digital:hover{box-shadow:0 0 50px rgba(167,139,255,0.4);}
+
+/* ========== STATS ========== */
+.stats-bar{background:linear-gradient(135deg,var(--dark2),var(--dark3));border-top:1px solid rgba(212,175,55,0.08);border-bottom:1px solid rgba(212,175,55,0.08);padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;}
+.stat-item{position:relative;}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:32px;background:rgba(212,175,55,0.15);}
+.stat-num{font-family:'Cinzel Decorative',serif;font-size:1.25rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.2;}
+.stat-label{font-size:0.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+
+/* ========== PAGES ========== */
+.page{display:none;}
+.page.active{display:block;animation:fadeIn 0.4s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.page.active{display:block;animation:fadeIn 0.5s cubic-bezier(0.23,1,0.32,1);}
+
+/* ========== BACK BAR ========== */
+.back-bar{background:rgba(10,10,16,0.92);padding:14px 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(212,175,55,0.07);position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+.back-btn{display:flex;align-items:center;gap:8px;background:rgba(212,175,55,0.04);border:1px solid rgba(212,175,55,0.18);color:var(--gold);padding:8px 18px;border-radius:20px;font-family:'Noto Sans Myanmar',sans-serif;font-size:0.75rem;letter-spacing:1px;cursor:none;transition:all 0.3s;}
+.back-btn:hover{background:rgba(212,175,55,0.1);border-color:rgba(212,175,55,0.4);transform:translateX(-2px);}
+.back-page-title{font-family:'Cinzel Decorative',serif;font-size:0.9rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;}
+
+/* ========== SECTIONS ========== */
+.sec{padding:50px 24px;}
+.sec-header{text-align:center;margin-bottom:40px;}
+.sec-tag{font-size:0.64rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:11px;}
+.sec-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.4rem,5vw,2.4rem);background:linear-gradient(135deg,var(--white),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;}
+.sec-line{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto 0;}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.grid-d{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:11px;}
+
+/* ========== SPECIAL CARDS ========== */
+.sp-card{background:linear-gradient(145deg,var(--dark2),var(--dark3));border:1px solid rgba(212,175,55,0.15);border-radius:16px;padding:26px 18px;text-align:center;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);cursor:none;backdrop-filter:blur(4px);}
+.sp-card:hover{transform:translateY(-8px);border-color:rgba(212,175,55,0.4);box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 30px rgba(212,175,55,0.1),inset 0 1px 0 rgba(212,175,55,0.1);}
+.sp-card.feat{border-color:rgba(212,175,55,0.45);}
+.sp-badge{position:absolute;top:11px;right:11px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-size:0.52rem;padding:3px 9px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
+.sp-icon{font-size:2.3rem;margin-bottom:10px;display:block;}
+.sp-name{font-family:'Cinzel Decorative',serif;font-size:0.86rem;color:var(--white);margin-bottom:6px;}
+.sp-desc{font-size:0.7rem;color:var(--muted);line-height:1.5;margin-bottom:13px;}
+.sp-price{font-family:'Cinzel Decorative',serif;font-size:1.35rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:3px;}
+.sp-note{font-size:0.62rem;color:var(--muted);margin-bottom:13px;}
+.btn-gold{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);border:none;padding:10px 22px;border-radius:10px;font-weight:700;font-size:0.7rem;letter-spacing:1px;cursor:none;transition:all 0.3s cubic-bezier(0.23,1,0.32,1);font-family:'Noto Sans Myanmar',sans-serif;box-shadow:0 3px 12px rgba(212,175,55,0.15);}
+.btn-gold:hover{box-shadow:0 6px 22px rgba(212,175,55,0.35);transform:translateY(-3px);}
+
+/* ========== DOUBLE SECTION ========== */
+.dbl-wrap{background:var(--dark3);border-radius:8px;padding:26px 18px;margin:0 24px;}
+.warn-box{background:rgba(255,107,53,0.07);border:1px solid rgba(255,107,53,0.28);border-radius:6px;padding:14px 18px;margin-bottom:22px;display:flex;gap:10px;align-items:flex-start;}
+.warn-icon{font-size:1.2rem;flex-shrink:0;}
+.warn-title{font-family:'Cinzel Decorative',serif;font-size:0.74rem;color:var(--orange-light);margin-bottom:5px;}
+.warn-text{font-size:0.73rem;color:var(--muted);line-height:1.7;}
+.warn-text strong{color:var(--white);}
+.dbl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.dbl-card{background:linear-gradient(145deg,var(--dark2),var(--dark3));border:1px solid rgba(255,107,53,0.18);border-radius:14px;padding:18px 12px;text-align:center;position:relative;overflow:hidden;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);cursor:none;}
+.dbl-card::after{content:'2x';position:absolute;top:-4px;left:-3px;font-family:'Cinzel Decorative',serif;font-size:3rem;color:rgba(255,107,53,0.05);font-weight:900;line-height:1;pointer-events:none;}
+.dbl-card:hover{transform:translateY(-5px);border-color:var(--orange);box-shadow:0 14px 40px rgba(0,0,0,0.5),0 0 20px rgba(255,107,53,0.15);}
+.dbl-badge{display:inline-block;background:linear-gradient(135deg,var(--orange-dark),var(--orange));color:white;font-size:0.52rem;padding:3px 8px;border-radius:100px;letter-spacing:2px;font-weight:700;margin-bottom:9px;text-transform:uppercase;}
+.dbl-amt{font-family:'Cinzel Decorative',serif;font-size:1.35rem;background:linear-gradient(135deg,var(--white),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:2px;}
+.dbl-formula{font-size:0.7rem;color:var(--orange-light);margin-bottom:1px;font-weight:600;}
+.dbl-lbl{font-size:0.55rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.dbl-price{font-family:'Cinzel Decorative',serif;font-size:1rem;background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:2px;}
+.dbl-ks{font-size:0.55rem;color:var(--muted);margin-bottom:10px;}
+.btn-orange{background:linear-gradient(135deg,var(--orange-dark),var(--orange),var(--orange-light));color:white;border:none;padding:8px 12px;border-radius:2px;font-weight:700;font-size:0.65rem;letter-spacing:1px;cursor:none;transition:all 0.3s;font-family:'Noto Sans Myanmar',sans-serif;width:100%;}
+.btn-orange:hover{box-shadow:0 0 16px rgba(255,107,53,0.4);}
+
+/* ========== DIAMOND GRID ========== */
+.d-card{background:linear-gradient(145deg,var(--dark2),var(--dark3));border:1px solid rgba(212,175,55,0.08);border-radius:12px;padding:14px 11px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;transition:all 0.3s cubic-bezier(0.23,1,0.32,1);cursor:none;position:relative;}
+.d-card:hover{border-color:rgba(212,175,55,0.35);transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.5),0 0 16px rgba(212,175,55,0.06);}
+.d-card.hot{border-color:rgba(212,175,55,0.26);}
+.hot-b{position:absolute;top:7px;right:7px;background:linear-gradient(135deg,#ff4444,#ff6b6b);color:white;font-size:0.46rem;padding:2px 6px;border-radius:100px;font-weight:700;}
+.d-ico{font-size:1.4rem;}
+.d-amt{font-family:'Cinzel Decorative',serif;font-size:0.9rem;background:linear-gradient(135deg,var(--white),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.d-lbl{font-size:0.52rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+.d-prc{font-family:'Cinzel Decorative',serif;font-size:0.8rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:2px;}
+.d-ks{font-size:0.52rem;color:var(--muted);}
+.btn-xs{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);border:none;padding:7px 10px;border-radius:8px;font-weight:700;font-size:0.6rem;cursor:none;transition:all 0.3s;font-family:'Noto Sans Myanmar',sans-serif;margin-top:4px;width:100%;}
+.btn-xs:hover{box-shadow:0 0 12px rgba(212,175,55,0.4);}
+
+/* ========== TIKTOK ========== */
+.tik-cat-hd{font-family:'Cinzel Decorative',serif;font-size:0.86rem;letter-spacing:2px;margin-bottom:13px;display:flex;align-items:center;gap:9px;}
+.tik-cat-hd.likes{color:#FF6B9D;}.tik-cat-hd.views{color:var(--tik);}.tik-cat-hd.follows{color:var(--purple);}
+.tik-sec-wrap{display:flex;flex-direction:column;gap:32px;}
+.tik-card{border-radius:16px;padding:20px 16px;text-align:center;position:relative;overflow:hidden;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);cursor:none;}
+.tik-card:hover{transform:translateY(-6px);}
+.gc{background:linear-gradient(135deg,rgba(212,175,55,0.06),var(--dark2));border:1px solid rgba(212,175,55,0.22);}
+.gc:hover{border-color:var(--gold);box-shadow:0 16px 45px rgba(0,0,0,0.5),0 0 20px rgba(212,175,55,0.12);}
+.sc{background:var(--dark2);border:1px solid rgba(165,207,255,0.18);}
+.sc:hover{border-color:#A5CFFF;}
+.bc{background:var(--dark2);border:1px solid rgba(212,175,55,0.1);}
+.bc:hover{border-color:rgba(212,175,55,0.3);}
+.tc{background:linear-gradient(135deg,rgba(0,242,234,0.05),var(--dark2));border:1px solid rgba(0,242,234,0.18);}
+.tc:hover{border-color:var(--tik);box-shadow:0 16px 45px rgba(0,0,0,0.5),0 0 20px rgba(0,242,234,0.1);}
+.pc{background:linear-gradient(135deg,rgba(167,139,255,0.06),var(--dark2));border:1px solid rgba(167,139,255,0.22);}
+.pc:hover{border-color:var(--purple);}
+.t-medal{font-size:1.7rem;display:block;margin-bottom:7px;}
+.t-bw{margin-bottom:7px;}
+.t-b{display:inline-block;font-size:0.52rem;padding:3px 9px;border-radius:100px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.bgs{background:linear-gradient(135deg,#9A7B1E,#D4AF37);color:var(--black);}
+.bss{background:linear-gradient(135deg,#5A7A9A,#A5CFFF);color:var(--black);}
+.bbi{background:linear-gradient(135deg,#6B4C1E,#CD7F32);color:white;}
+.bts{background:linear-gradient(135deg,var(--tik-dark),var(--tik));color:var(--black);}
+.bps{background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:white;}
+.t-name{font-family:'Cinzel Decorative',serif;font-size:0.8rem;color:var(--white);margin-bottom:5px;}
+.t-hl{font-size:0.68rem;font-weight:600;margin-bottom:4px;}
+.t-hl.s{color:#4ADE80;}.t-hl.w{color:#F87171;}
+.t-desc{font-size:0.66rem;color:var(--muted);line-height:1.5;margin-bottom:11px;}
+.t-price{font-family:'Cinzel Decorative',serif;font-size:1.2rem;display:block;margin-bottom:2px;}
+.gp{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tp{background:linear-gradient(135deg,var(--tik),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.pp{background:linear-gradient(135deg,var(--purple),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.t-unit{font-size:0.58rem;color:var(--muted);margin-bottom:11px;}
+.btn-t{border:none;padding:8px 14px;border-radius:2px;font-weight:700;font-size:0.68rem;letter-spacing:1px;cursor:none;transition:all 0.3s;font-family:'Noto Sans Myanmar',sans-serif;width:100%;}
+.btn-t:hover{transform:translateY(-2px);opacity:0.88;}
+.btn-t.g{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);}
+.btn-t.t{background:linear-gradient(135deg,var(--tik-dark),var(--tik));color:var(--black);}
+.btn-t.p{background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:white;}
+.hr{border:none;border-top:1px solid rgba(255,255,255,0.05);margin:4px 0;}
+
+/* ========== CAPCUT ========== */
+.cap-section-hd{text-align:center;margin-bottom:28px;}
+.cap-section-tag{display:inline-block;background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:white;font-size:0.6rem;padding:5px 16px;border-radius:100px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+.cap-section-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.2rem,4vw,1.8rem);background:linear-gradient(135deg,var(--purple),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:6px;}
+.cap-section-line{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent);margin:0 auto;}
+.cap-card{background:linear-gradient(145deg,rgba(167,139,255,0.07),var(--dark2));border:1px solid rgba(167,139,255,0.22);border-radius:18px;padding:30px 22px;text-align:center;max-width:360px;margin:0 auto;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);cursor:none;}
+.cap-card:hover{transform:translateY(-8px);border-color:rgba(167,139,255,0.45);box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 30px rgba(167,139,255,0.12),inset 0 1px 0 rgba(167,139,255,0.1);}
+.cap-ico{font-size:3.2rem;display:block;margin-bottom:13px;}
+.cap-name{font-family:'Cinzel Decorative',serif;font-size:1.05rem;color:var(--white);margin-bottom:8px;}
+.cap-feats{display:flex;flex-direction:column;gap:5px;margin-bottom:16px;text-align:left;}
+.cap-feat{font-size:0.72rem;color:var(--muted);display:flex;align-items:center;gap:8px;}
+.cap-feat::before{content:'✓';color:#4ADE80;font-weight:700;flex-shrink:0;}
+.cap-price{font-family:'Cinzel Decorative',serif;font-size:1.7rem;background:linear-gradient(135deg,var(--purple),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:3px;}
+.cap-unit{font-size:0.65rem;color:var(--muted);margin-bottom:16px;}
+.btn-purple{background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:white;border:none;padding:12px 28px;border-radius:12px;font-weight:700;font-size:0.78rem;letter-spacing:1px;cursor:none;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);font-family:'Noto Sans Myanmar',sans-serif;width:100%;box-shadow:0 4px 18px rgba(167,139,255,0.18);}
+.btn-purple:hover{box-shadow:0 0 26px rgba(167,139,255,0.4);transform:translateY(-2px);}
+/* ========== DIGITAL PRODUCT CARDS ========== */
+.dig-section{margin-bottom:36px;}
+.dig-section-hd{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(167,139,255,0.12);}
+.dig-section-icon{font-size:1.5rem;}
+.dig-section-title{font-family:'Cinzel Decorative',serif;font-size:0.88rem;background:linear-gradient(135deg,var(--purple),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.dig-section-tag{font-size:0.55rem;padding:2px 8px;border-radius:100px;background:rgba(167,139,255,0.15);color:var(--purple);border:1px solid rgba(167,139,255,0.3);letter-spacing:1px;text-transform:uppercase;margin-left:auto;}
+.dig-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:11px;}
+.dig-card{background:linear-gradient(145deg,var(--dark2),var(--dark3));border:1px solid rgba(167,139,255,0.15);border-radius:14px;padding:16px 12px;text-align:center;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);cursor:none;position:relative;overflow:hidden;}
+.dig-card:hover{transform:translateY(-6px);border-color:rgba(167,139,255,0.35);box-shadow:0 14px 40px rgba(0,0,0,0.5),0 0 20px rgba(167,139,255,0.1);}
+.dig-card.highlight{border-color:rgba(167,139,255,0.4);background:linear-gradient(135deg,rgba(167,139,255,0.07),var(--dark2));}
+.dig-card-badge{position:absolute;top:7px;right:7px;font-size:0.48rem;padding:2px 7px;border-radius:100px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.badge-save{background:linear-gradient(135deg,#16a34a,#4ADE80);color:white;}
+.badge-best{background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:white;}
+.badge-private{background:linear-gradient(135deg,#9A7B1E,#D4AF37);color:var(--black);}
+.dig-ico{font-size:1.6rem;display:block;margin-bottom:7px;}
+.dig-qty{font-family:'Cinzel Decorative',serif;font-size:0.95rem;background:linear-gradient(135deg,var(--white),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:2px;}
+.dig-desc{font-size:0.6rem;color:var(--muted);line-height:1.4;margin-bottom:9px;}
+.dig-price{font-family:'Cinzel Decorative',serif;font-size:1.1rem;background:linear-gradient(135deg,var(--purple),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:2px;}
+.dig-ks{font-size:0.52rem;color:var(--muted);margin-bottom:9px;}
+.btn-dig{background:linear-gradient(135deg,var(--purple-dark),var(--purple));color:white;border:none;padding:8px 10px;border-radius:8px;font-weight:700;font-size:0.62rem;cursor:none;transition:all 0.3s;font-family:'Noto Sans Myanmar',sans-serif;width:100%;box-shadow:0 2px 10px rgba(167,139,255,0.15);}
+.btn-dig:hover{box-shadow:0 0 14px rgba(167,139,255,0.4);}
+/* ChatGPT special */
+.chatgpt-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.gpt-card{border-radius:8px;padding:20px 15px;text-align:center;transition:all 0.35s;cursor:none;position:relative;}
+.gpt-share{background:linear-gradient(135deg,rgba(16,163,127,0.08),var(--dark2));border:1px solid rgba(16,163,127,0.3);}
+.gpt-share:hover{border-color:#10a37f;box-shadow:0 14px 40px rgba(0,0,0,0.5),0 0 20px rgba(16,163,127,0.15);transform:translateY(-5px);}
+.gpt-private{background:linear-gradient(135deg,rgba(212,175,55,0.08),var(--dark2));border:1px solid rgba(212,175,55,0.3);}
+.gpt-private:hover{border-color:var(--gold);box-shadow:0 14px 40px rgba(0,0,0,0.5),0 0 20px rgba(212,175,55,0.15);transform:translateY(-5px);}
+.gpt-ico{font-size:2rem;display:block;margin-bottom:8px;}
+.gpt-type{font-size:0.55rem;padding:3px 10px;border-radius:100px;font-weight:700;letter-spacing:2px;text-transform:uppercase;display:inline-block;margin-bottom:8px;}
+.gpt-share-tag{background:rgba(16,163,127,0.15);color:#10a37f;border:1px solid rgba(16,163,127,0.3);}
+.gpt-private-tag{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);}
+.gpt-name{font-family:'Cinzel Decorative',serif;font-size:0.78rem;color:var(--white);margin-bottom:4px;}
+.gpt-desc{font-size:0.63rem;color:var(--muted);line-height:1.5;margin-bottom:10px;}
+.gpt-price-share{font-family:'Cinzel Decorative',serif;font-size:1.15rem;background:linear-gradient(135deg,#10a37f,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:2px;}
+.gpt-price-priv{font-family:'Cinzel Decorative',serif;font-size:1.15rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:2px;}
+.gpt-unit{font-size:0.52rem;color:var(--muted);margin-bottom:10px;}
+.btn-gpt-share{background:linear-gradient(135deg,#065f46,#10a37f);color:white;border:none;padding:8px 12px;border-radius:2px;font-weight:700;font-size:0.65rem;cursor:none;transition:all 0.3s;font-family:'Noto Sans Myanmar',sans-serif;width:100%;}
+.btn-gpt-priv{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);border:none;padding:8px 12px;border-radius:2px;font-weight:700;font-size:0.65rem;cursor:none;transition:all 0.3s;font-family:'Noto Sans Myanmar',sans-serif;width:100%;}
+
+
+/* ========== HOW / STEPS ========== */
+.how-sec{background:var(--dark);}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;}
+.step{text-align:center;padding:22px 14px;background:linear-gradient(145deg,var(--dark2),var(--dark3));border:1px solid rgba(212,175,55,0.08);border-radius:16px;transition:all 0.3s cubic-bezier(0.23,1,0.32,1);}
+.step:hover{border-color:rgba(212,175,55,0.25);transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.3);}
+.s-num{width:46px;height:46px;border:1px solid rgba(212,175,55,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel Decorative',serif;font-size:0.88rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 auto 11px;background-color:var(--dark2);}
+.s-title{font-family:'Cinzel Decorative',serif;font-size:0.7rem;color:var(--gold-light);margin-bottom:5px;}
+.s-desc{font-size:0.68rem;color:var(--muted);line-height:1.6;}
+
+/* ========== ORDER FORM ========== */
+.order-sec{background:var(--black);padding:50px 24px;}
+.order-sec .sec-header{margin-bottom:26px;}
+.order-form{background:linear-gradient(145deg,var(--dark3),var(--dark2));border:1px solid rgba(212,175,55,0.12);border-radius:20px;padding:28px 22px;max-width:480px;margin:0 auto;box-shadow:0 24px 60px rgba(0,0,0,0.4);}
+.f-title{font-family:'Cinzel Decorative',serif;font-size:0.86rem;color:var(--gold);margin-bottom:16px;letter-spacing:1px;}
+.fg{margin-bottom:11px;}
+.fg label{display:block;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.12);border-radius:10px;color:var(--white);font-family:'Noto Sans Myanmar',sans-serif;font-size:0.8rem;outline:none;transition:all 0.3s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(212,175,55,0.4);background:rgba(212,175,55,0.03);box-shadow:0 0 0 3px rgba(212,175,55,0.06);}
+.fg select option{background:var(--dark2);}
+.fg textarea{resize:vertical;min-height:55px;}
+.f-submit{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));color:var(--black);border:none;border-radius:12px;font-weight:700;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);font-family:'Noto Sans Myanmar',sans-serif;margin-top:8px;box-shadow:0 4px 20px rgba(212,175,55,0.2);}
+.f-submit:hover{box-shadow:0 8px 30px rgba(212,175,55,0.35);transform:translateY(-3px);}
+
+/* ========== CONTACT ========== */
+.ch-wrap{display:flex;flex-direction:column;gap:9px;max-width:480px;margin:0 auto 26px;}
+.ch-btn{display:flex;align-items:center;gap:12px;padding:14px 18px;background:linear-gradient(135deg,var(--dark2),var(--dark3));border:1px solid rgba(212,175,55,0.1);border-radius:14px;text-decoration:none;color:var(--white);transition:all 0.35s cubic-bezier(0.23,1,0.32,1);cursor:none;}
+.ch-btn:hover{border-color:rgba(212,175,55,0.35);transform:translateX(8px);box-shadow:0 8px 24px rgba(0,0,0,0.3),0 0 12px rgba(212,175,55,0.06);}
+.ch-icon{font-size:1.25rem;}
+.ch-lbl{font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.ch-name{font-weight:600;font-size:0.82rem;}
+
+/* ========== FOOTER ========== */
+footer{background:var(--dark);border-top:1px solid rgba(212,175,55,0.08);padding:22px;text-align:center;}
+.f-logo{font-family:'Cinzel Decorative',serif;font-size:0.95rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:10px;}
+.f-copy{font-size:0.6rem;color:var(--muted);}
+.back-footer-btn{background:none;border:1px solid rgba(212,175,55,0.2);color:var(--gold);padding:7px 18px;border-radius:2px;font-family:'Noto Sans Myanmar',sans-serif;font-size:0.7rem;cursor:none;margin-top:10px;}
+
+
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+/* ========== AUTH PAGES ========== */
+.auth-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;background:var(--black);position:relative;}
+.auth-page::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 30%,rgba(167,139,255,0.08) 0%,transparent 60%);}
+.auth-box{background:linear-gradient(145deg,var(--dark3),var(--dark2));border:1px solid rgba(212,175,55,0.15);border-radius:24px;padding:36px 28px;width:100%;max-width:400px;position:relative;z-index:1;box-shadow:0 32px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(212,175,55,0.08);}
+.auth-logo{font-family:'Cinzel Decorative',serif;font-size:1.1rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;display:block;margin-bottom:6px;}
+.auth-sub{text-align:center;font-size:0.68rem;color:var(--muted);margin-bottom:24px;}
+.auth-tabs{display:flex;border:1px solid rgba(212,175,55,0.12);border-radius:12px;overflow:hidden;margin-bottom:24px;background:rgba(255,255,255,0.02);padding:3px;gap:3px;}
+.auth-tab{flex:1;padding:10px;background:none;border:none;color:var(--muted);font-family:'Noto Sans Myanmar',sans-serif;font-size:0.75rem;cursor:none;transition:all 0.3s;letter-spacing:1px;border-radius:9px;}
+.auth-tab.active{background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));color:var(--black);font-weight:700;box-shadow:0 2px 10px rgba(212,175,55,0.2);}
+.auth-form{display:none;}.auth-form.active{display:block;}
+.auth-fg{margin-bottom:13px;}
+.auth-fg label{display:block;font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.auth-fg input{width:100%;padding:12px 15px;background:rgba(255,255,255,0.03);border:1px solid rgba(212,175,55,0.12);border-radius:10px;color:var(--white);font-family:'Noto Sans Myanmar',sans-serif;font-size:0.82rem;outline:none;transition:all 0.3s;}
+.auth-fg input:focus{border-color:rgba(212,175,55,0.45);background:rgba(212,175,55,0.03);box-shadow:0 0 0 3px rgba(212,175,55,0.07);}
+.auth-err{font-size:0.68rem;color:#F87171;margin-bottom:12px;display:none;padding:10px 13px;background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.18);border-radius:10px;}
+.auth-ok{font-size:0.68rem;color:#4ADE80;margin-bottom:12px;display:none;padding:10px 13px;background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.18);border-radius:10px;}
+.auth-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));color:var(--black);border:none;border-radius:12px;font-weight:700;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);font-family:'Noto Sans Myanmar',sans-serif;box-shadow:0 4px 20px rgba(212,175,55,0.2);margin-top:6px;}
+.auth-btn:hover{box-shadow:0 8px 30px rgba(212,175,55,0.35);transform:translateY(-3px);}
+.auth-divider{text-align:center;font-size:0.62rem;color:var(--muted);margin:14px 0;}
+.auth-switch{font-size:0.68rem;color:var(--muted);text-align:center;margin-top:14px;}
+.auth-switch span{color:var(--gold);cursor:none;text-decoration:underline;}
+/* Top-right auth button on home */
+.auth-top-btn{position:fixed;top:14px;right:16px;z-index:200;display:flex;gap:8px;}
+.auth-top-btn button{background:rgba(13,13,18,0.9);border:1px solid rgba(212,175,55,0.25);color:var(--gold);padding:7px 14px;border-radius:2px;font-family:'Noto Sans Myanmar',sans-serif;font-size:0.7rem;cursor:none;backdrop-filter:blur(8px);transition:all 0.3s;}
+.auth-top-btn button:hover{background:rgba(212,175,55,0.1);border-color:var(--gold);}
+.auth-welcome{display:none;align-items:center;gap:8px;background:rgba(10,10,16,0.85);border:1px solid rgba(212,175,55,0.18);padding:8px 16px;border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 16px rgba(0,0,0,0.3);}
+.auth-welcome-name{font-size:0.7rem;color:var(--gold-light);}
+.auth-welcome-out{background:none;border:none;color:var(--muted);font-size:0.65rem;cursor:none;font-family:'Noto Sans Myanmar',sans-serif;padding:0 4px;}
+
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"></div>
+<div class="cursor-f" id="curf"></div>
+
+<!-- ==================== AUTH PAGE ==================== -->
+<div id="page-auth" class="page active">
+  <div class="auth-page">
+    <span class="auth-logo">Bayinnaung369</span>
+    <div class="auth-sub">Myanmar Premium Shop · Account</div>
+    <div class="auth-box">
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">🔑 Login</button>
+        <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">📝 Register</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="auth-form active" id="form-login">
+        <div id="login-err" class="auth-err"></div>
+        <div id="login-ok" class="auth-ok"></div>
+        <div class="auth-fg">
+          <label>Username</label>
+          <input type="text" id="login-user" placeholder="သင့် Username">
+        </div>
+        <div class="auth-fg">
+          <label>Password</label>
+          <input type="password" id="login-pass" placeholder="••••••••">
+        </div>
+        <button class="auth-btn" onclick="doLogin()">🔑 Login ဝင်မည်</button>
+        <div class="auth-switch">Account မရှိသေးဘူးလား? <span onclick="switchAuthTab('register')">Register လုပ်မည်</span></div>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="auth-form" id="form-register">
+        <div id="reg-err" class="auth-err"></div>
+        <div id="reg-ok" class="auth-ok"></div>
+        <div class="auth-fg">
+          <label>Username</label>
+          <input type="text" id="reg-user" placeholder="နာမည်ရိုက်ထည့်ပါ (unique)">
+        </div>
+        <div class="auth-fg">
+          <label>Password</label>
+          <input type="password" id="reg-pass" placeholder="Password ရိုက်ပါ">
+        </div>
+        <div class="auth-fg">
+          <label>Password ထပ်ရိုက်ပါ</label>
+          <input type="password" id="reg-pass2" placeholder="Password ထပ်ရိုက်ပါ">
+        </div>
+        <button class="auth-btn" onclick="doRegister()">📝 Register လုပ်မည်</button>
+        <div class="auth-switch">Account ရှိပြီးသားလား? <span onclick="switchAuthTab('login')">Login ဝင်မည်</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ==================== HOME PAGE ==================== -->
+<div id="page-home" class="page">
+  <section class="hero">
+    <div class="hero-bg"></div><div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Myanmar Premium Shop</div>
+      <h1 class="hero-title"><span class="l1">Bayinnaung</span><span class="l2">Shop</span></h1>
+      <p class="hero-sub"><span>💎 MLBB Diamond</span> · <span>🎵 TikTok Boost</span> · <span>✨ Digital Products</span><br>လျင်မြန် · ယုံကြည်ရ · ဈေးနှုန်းသင့်တင့်</p>
+      <div class="tab-buttons">
+        <button class="tab-btn tab-btn-mlbb" onclick="goPage('mlbb')"><span>💎</span> MLBB Diamond</button>
+        <button class="tab-btn tab-btn-tik" onclick="goPage('tiktok')"><span>🎵</span> TikTok Boost</button>
+        <button class="tab-btn tab-btn-digital" onclick="goPage('digital')"><span>✨</span> Digital Products</button>
+      </div>
+    </div>
+  </section>
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-num">5000+</span><span class="stat-label">Customer</span></div>
+    <div class="stat-item"><span class="stat-num">99%</span><span class="stat-label">ကျေနပ်မှု</span></div>
+    <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">ဝန်ဆောင်မှု</span></div>
+    <div class="stat-item"><span class="stat-num">15 Min</span><span class="stat-label">Delivery</span></div>
+  </div>
+  <section class="order-sec">
+    <div class="sec-header">
+      <span class="sec-tag">Contact</span>
+      <h2 class="sec-title" style="font-size:clamp(1.3rem,4vw,2rem);">ဆက်သွယ်ရန်</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="ch-wrap">
+      <a href="https://t.me/bayinnaung369" class="ch-btn"><span class="ch-icon">✈️</span><div><div class="ch-lbl">Telegram</div><div class="ch-name">@bayinnaung369</div></div></a>
+      <a href="#" class="ch-btn"><span class="ch-icon">📘</span><div><div class="ch-lbl">Facebook</div><div class="ch-name">Diamond saller</div></div></a>
+      <a href="#" class="ch-btn"><span class="ch-icon">💳</span><div><div class="ch-lbl">Kbz/Wave ငွေလွှဲရန်</div><div class="ch-name">09-449219536 U MgMg win</div></div></a>
+    </div>
+  </section>
+  <footer><span class="f-logo">Bayinnaung369</span><div class="f-copy">© 2026 Bayinnaung369</div></footer>
+</div>
+
+<!-- ==================== MLBB PAGE ==================== -->
+<div id="page-mlbb" class="page">
+  <div class="back-bar">
+    <button class="back-btn" onclick="goPage('home')">← နောက်သို့</button>
+    <span class="back-page-title">💎 MLBB Diamond</span>
+  </div>
+  <section class="sec">
+    <div class="sec-header"><span class="sec-tag">Special Packages</span><h2 class="sec-title">အထူး Package များ</h2><div class="sec-line"></div></div>
+    <div class="grid-3">
+      <div class="sp-card"><span class="sp-icon">🎫</span><div class="sp-name">Weekly Pass</div><div class="sp-desc">တစ်ပတ်လျှင် Diamond နေ့စဉ်ရမည်</div><span class="sp-price">6,000</span><div class="sp-note">ကျပ်</div><button class="btn-gold" onclick="goOrder('Weekly Pass - 6,000 ကျပ်','mlbb')">မှာရန်</button></div>
+      <div class="sp-card feat"><span class="sp-badge">POPULAR</span><span class="sp-icon">⭐</span><div class="sp-name">Starlight Normal</div><div class="sp-desc">Starlight Member · ၇ ရက် စောင့်ရမည်</div><span class="sp-price">12,000</span><div class="sp-note">ကျပ် · ၇ ရက်အတွင်း ရောက်မည်</div><button class="btn-gold" onclick="goOrder('Starlight Normal - 12,000 ကျပ် (၇ ရက်)','mlbb')">မှာရန်</button></div>
+      <div class="sp-card"><span class="sp-icon">🌙</span><div class="sp-name">Twilight Pass</div><div class="sp-desc">Premium Twilight Pass Package</div><span class="sp-price">33,600</span><div class="sp-note">ကျပ်</div><button class="btn-gold" onclick="goOrder('Twilight Pass - 33,600 ကျပ်','mlbb')">မှာရန်</button></div>
+    </div>
+  </section>
+  <section class="sec" style="padding-top:0;">
+    <div class="dbl-wrap">
+      <div class="sec-header" style="margin-bottom:18px;"><span class="sec-tag" style="color:var(--orange);">Limited</span><h2 class="sec-title" style="background:linear-gradient(135deg,var(--orange-light),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🔥 Diamond နှစ်ဆ Plan</h2><div class="sec-line" style="background:linear-gradient(90deg,transparent,var(--orange),transparent);"></div></div>
+      <div class="warn-box"><div class="warn-icon">⚠️</div><div><div class="warn-title">⚠️ သတိပေးချက်</div><div class="warn-text">တစ်ကောင့်မှာ <strong>တစ်ခုကို တစ်ခါသာ</strong> နှစ်ဆရပါမည်။ ဥပမာ · 50 ဖြည့်ပြီးရင် <strong>150, 250, 500 ဆက်ဖြည့်လို့ ရသေးသည်</strong>။</div></div></div>
+      <div class="dbl-grid">
+        <div class="dbl-card"><div class="dbl-badge">2× Diamond</div><span class="dbl-amt">100 💎</span><div class="dbl-formula">50+50</div><div class="dbl-lbl">Total</div><span class="dbl-price">3,300</span><div class="dbl-ks">ကျပ်</div><button class="btn-orange" onclick="goOrder('2× Diamond 50+50=100 - 3,300 ကျပ်','mlbb')">မှာရန်</button></div>
+        <div class="dbl-card"><div class="dbl-badge">2× Diamond</div><span class="dbl-amt">300 💎</span><div class="dbl-formula">150+150</div><div class="dbl-lbl">Total</div><span class="dbl-price">10,500</span><div class="dbl-ks">ကျပ်</div><button class="btn-orange" onclick="goOrder('2× Diamond 150+150=300 - 10,500 ကျပ်','mlbb')">မှာရန်</button></div>
+        <div class="dbl-card"><div class="dbl-badge">2× Diamond</div><span class="dbl-amt">500 💎</span><div class="dbl-formula">250+250</div><div class="dbl-lbl">Total</div><span class="dbl-price">15,900</span><div class="dbl-ks">ကျပ်</div><button class="btn-orange" onclick="goOrder('2× Diamond 250+250=500 - 15,900 ကျပ်','mlbb')">မှာရန်</button></div>
+        <div class="dbl-card"><div class="dbl-badge">2× Diamond</div><span class="dbl-amt">1000 💎</span><div class="dbl-formula">500+500</div><div class="dbl-lbl">Total</div><span class="dbl-price">32,000</span><div class="dbl-ks">ကျပ်</div><button class="btn-orange" onclick="goOrder('2× Diamond 500+500=1000 - 32,000 ကျပ်','mlbb')">မှာရန်</button></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--dark);padding-top:40px;">
+    <div class="sec-header"><span class="sec-tag">Diamond Packages</span><h2 class="sec-title">💎 Diamond များ</h2><div class="sec-line"></div></div>
+    <div class="grid-d" id="diaGrid"></div>
+  </section>
+  <section class="how-sec sec"><div class="sec-header"><span class="sec-tag">How To</span><h2 class="sec-title">မှာနည်း</h2><div class="sec-line"></div></div>
+    <div class="steps"><div class="step"><div class="s-num">၁</div><div class="s-title">Package ရွေး</div><div class="s-desc">Diamond Package ကို ရွေး၍ မှာရန် နှိပ်ပါ</div></div><div class="step"><div class="s-num">၂</div><div class="s-title">Form ဖြည့်</div><div class="s-desc">နာမည်၊ ဖုန်း၊ MLBB Game ID ဖြည့်ပါ</div></div><div class="step"><div class="s-num">၃</div><div class="s-title">ငွေပေး</div><div class="s-desc">KBZPay / WavePay လွှဲ Screenshot ပို့ပါ</div></div><div class="step"><div class="s-num">၄</div><div class="s-title">Diamond ရပြီ</div><div class="s-desc">မိနစ် ၅–၁၅ အတွင်း ရောက်မည်</div></div></div>
+  </section>
+  <div class="order-sec"><div class="sec-header"><span class="sec-tag">Order</span><h2 class="sec-title" style="font-size:clamp(1.3rem,4vw,2rem);">Order တင်ရန်</h2><div class="sec-line"></div></div><div id="mlbb-form"></div></div>
+  <footer><span class="f-logo">Bayinnaung369</span><button class="back-footer-btn" onclick="goPage('home')">🏠 Home သို့ ပြန်သွားရန်</button></footer>
+</div>
+
+<!-- ==================== TIKTOK PAGE ==================== -->
+<div id="page-tiktok" class="page">
+  <div class="back-bar" style="border-bottom:1px solid rgba(0,242,234,0.1);">
+    <button class="back-btn" style="border-color:rgba(0,242,234,0.2);color:var(--tik);" onclick="goPage('home')">← နောက်သို့</button>
+    <span class="back-page-title" style="background:linear-gradient(135deg,var(--tik),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🎵 TikTok Boost</span>
+  </div>
+  <section class="sec">
+    <div class="sec-header"><span class="sec-tag" style="color:var(--tik);">TikTok Services</span><h2 class="sec-title" style="background:linear-gradient(135deg,var(--tik),#fff,var(--tik2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🎵 TikTok Boost</h2><div class="sec-line" style="background:linear-gradient(90deg,transparent,var(--tik),var(--tik2),transparent);"></div></div>
+    <div class="tik-sec-wrap">
+      <div>
+        <div class="tik-cat-hd likes"><span>❤️</span> TikTok Like</div>
+        <div class="grid-3">
+          <div class="tik-card gc"><span class="t-medal">🏅</span><div class="t-bw"><span class="t-b bgs">ပြန်မကျ Premium</span></div><div class="t-name">Like 1,000</div><div class="t-hl s">✅ ပြန်မကျ + View တက်</div><div class="t-desc">Like ဝယ်တာနဲ့ View ကောတက်ပါတယ်</div><span class="t-price gp">3,500</span><div class="t-unit">ကျပ် / 1,000 Like</div><button class="btn-t g" onclick="goOrder('TikTok Like 1000 (ပြန်မကျ+View တက်) - 3,500 ကျပ်','tiktok')">မှာရန်</button></div>
+          <div class="tik-card sc"><span class="t-medal">🥇</span><div class="t-bw"><span class="t-b bss">ပြန်မကျ</span></div><div class="t-name">Like 1,000</div><div class="t-hl s">✅ လုံးဝပြန်မကျပါ</div><div class="t-desc">သင့်တင့်သောစျေး · ယုံကြည်ရ</div><span class="t-price gp">2,500</span><div class="t-unit">ကျပ် / 1,000 Like</div><button class="btn-t g" onclick="goOrder('TikTok Like 1000 (ပြန်မကျ) - 2,500 ကျပ်','tiktok')">မှာရန်</button></div>
+          <div class="tik-card bc"><span class="t-medal">🥉</span><div class="t-bw"><span class="t-b bbi">စျေးချို</span></div><div class="t-name">Like 1,000</div><div class="t-hl w">⚠️ ပြန်ကျနိုင်သည်</div><div class="t-desc">စျေးချို · ပြန်ကျရင် မဖြည့်ပေးပါ</div><span class="t-price gp">500</span><div class="t-unit">ကျပ် / 1,000 Like</div><button class="btn-t g" onclick="goOrder('TikTok Like 1000 (စျေးချို) - 500 ကျပ်','tiktok')">မှာရန်</button></div>
+        </div>
+      </div>
+      <hr class="hr">
+      <div>
+        <div class="tik-cat-hd views"><span>👁️</span> TikTok View</div>
+        <div class="grid-2">
+          <div class="tik-card tc"><span class="t-medal">🥇</span><div class="t-bw"><span class="t-b bts">ပြန်မကျ · တစ်သက်သာ</span></div><div class="t-name">View 10,000</div><div class="t-hl s">✅ တစ်သက်တာ ပြန်မကျ</div><div class="t-desc">1k = 350 ကျပ် · High Quality</div><span class="t-price tp">3,000</span><div class="t-unit">ကျပ် / 10,000 View</div><button class="btn-t t" onclick="goOrder('TikTok View 10000 (ပြန်မကျတစ်သက်သာ) - 3,000 ကျပ်','tiktok')">မှာရန်</button></div>
+          <div class="tik-card bc"><span class="t-medal">🥉</span><div class="t-bw"><span class="t-b bbi">စျေးချို</span></div><div class="t-name">View 10,000</div><div class="t-hl w">⚠️ ပြန်ကျနိုင်သည်</div><div class="t-desc">စျေးချို · ပြန်ကျရင် မဖြည့်ပေးပါ</div><span class="t-price tp">1,000</span><div class="t-unit">ကျပ် / 10,000 View</div><button class="btn-t t" onclick="goOrder('TikTok View 10000 (စျေးချို) - 1,000 ကျပ်','tiktok')">မှာရန်</button></div>
+        </div>
+      </div>
+      <hr class="hr">
+      <div>
+        <div class="tik-cat-hd follows"><span>👥</span> TikTok Follow</div>
+        <div class="grid-2">
+          <div class="tik-card pc"><span class="t-medal">🏅</span><div class="t-bw"><span class="t-b bps">ပြန်မကျ</span></div><div class="t-name">Follow 100</div><div class="t-hl s">✅ ပြန်မကျပါဗျ</div><div class="t-desc">TikTok Followers တိုးချဲ့မည်</div><span class="t-price pp">2,000</span><div class="t-unit">ကျပ် / 100 Follow</div><button class="btn-t p" onclick="goOrder('TikTok Follow 100 (ပြန်မကျ) - 2,000 ကျပ်','tiktok')">မှာရန်</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="order-sec"><div class="sec-header"><span class="sec-tag" style="color:var(--tik);">Order</span><h2 class="sec-title" style="font-size:clamp(1.3rem,4vw,2rem);">Order တင်ရန်</h2><div class="sec-line"></div></div><div id="tik-form"></div></div>
+  <footer style="background:var(--dark);"><span class="f-logo">Bayinnaung369</span><button class="back-footer-btn" style="border-color:rgba(0,242,234,0.2);color:var(--tik);" onclick="goPage('home')">🏠 Home သို့ ပြန်သွားရန်</button></footer>
+</div>
+
+<!-- ==================== DIGITAL PAGE ==================== -->
+<div id="page-digital" class="page">
+  <div class="back-bar" style="border-bottom:1px solid rgba(167,139,255,0.1);">
+    <button class="back-btn" style="border-color:rgba(167,139,255,0.2);color:var(--purple);" onclick="goPage('home')">← နောက်သို့</button>
+    <span class="back-page-title" style="background:linear-gradient(135deg,var(--purple),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">✨ Digital Products</span>
+  </div>
+  <section class="sec">
+    <div style="background:var(--dark3);border-radius:8px;padding:24px 18px;display:flex;flex-direction:column;gap:36px;">
+
+      <!-- ===== TELEGRAM ===== -->
+      <div class="dig-section">
+        <div class="dig-section-hd">
+          <span class="dig-section-icon">✈️</span>
+          <span class="dig-section-title">Telegram Account</span>
+          <span class="dig-section-tag">Aged Acc</span>
+        </div>
+        <div class="dig-cards">
+          <div class="dig-card">
+            <span class="dig-ico">📱</span>
+            <span class="dig-qty">1 Account</span>
+            <div class="dig-desc">Aged · Ready to use</div>
+            <span class="dig-price">3,000</span>
+            <div class="dig-ks">ကျပ်</div>
+            <button class="btn-dig" onclick="goOrder('Telegram Account 1acc - 3,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+          <div class="dig-card highlight">
+            <span class="dig-card-badge badge-save">SAVE</span>
+            <span class="dig-ico">📦</span>
+            <span class="dig-qty">10 Accounts</span>
+            <div class="dig-desc">Bulk · 2,500 ks/acc</div>
+            <span class="dig-price">25,000</span>
+            <div class="dig-ks">ကျပ်</div>
+            <button class="btn-dig" onclick="goOrder('Telegram Account 10acc - 25,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== GMAIL ===== -->
+      <div class="dig-section">
+        <div class="dig-section-hd">
+          <span class="dig-section-icon">📧</span>
+          <span class="dig-section-title">Gmail Account</span>
+          <span class="dig-section-tag">Fresh / Aged</span>
+        </div>
+        <div class="dig-cards">
+          <div class="dig-card">
+            <span class="dig-ico">📩</span>
+            <span class="dig-qty">1 Account</span>
+            <div class="dig-desc">Fresh Gmail · Ready</div>
+            <span class="dig-price">3,000</span>
+            <div class="dig-ks">ကျပ်</div>
+            <button class="btn-dig" onclick="goOrder('Gmail Account 1acc - 3,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+          <div class="dig-card highlight">
+            <span class="dig-card-badge badge-save">SAVE</span>
+            <span class="dig-ico">📦</span>
+            <span class="dig-qty">10 Accounts</span>
+            <div class="dig-desc">Bulk · 2,500 ks/acc</div>
+            <span class="dig-price">25,000</span>
+            <div class="dig-ks">ကျပ်</div>
+            <button class="btn-dig" onclick="goOrder('Gmail Account 10acc - 25,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CANVA ===== -->
+      <div class="dig-section">
+        <div class="dig-section-hd">
+          <span class="dig-section-icon">🎨</span>
+          <span class="dig-section-title">Canva Education</span>
+          <span class="dig-section-tag">Lifetime Premium</span>
+        </div>
+        <div style="max-width:340px;margin:0 auto;">
+          <div class="dig-card highlight" style="padding:20px 16px;">
+            <span class="dig-card-badge badge-best">LIFETIME</span>
+            <span class="dig-ico">🖌️</span>
+            <span class="dig-qty" style="font-size:1rem;">Canva Education</span>
+            <div class="dig-desc" style="margin-bottom:12px;font-size:0.68rem;">Premium features အကုန်သုံးလို့ရ · ၁ နှစ် အာမခံ<br>လော့အင်ဝင်ထားသောကောင့်ထဲ ဝင်ပေးမည်</div>
+            <span class="dig-price" style="font-size:1.4rem;">10,000</span>
+            <div class="dig-ks">ကျပ်</div>
+            <button class="btn-dig" style="margin-top:8px;" onclick="goOrder('Canva Education Lifetime Premium - 10,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ALIGHT MOTION ===== -->
+      <div class="dig-section">
+        <div class="dig-section-hd">
+          <span class="dig-section-icon">🎬</span>
+          <span class="dig-section-title">Alight Motion</span>
+          <span class="dig-section-tag">1 Year</span>
+        </div>
+        <div style="max-width:340px;margin:0 auto;">
+          <div class="dig-card highlight" style="padding:20px 16px;">
+            <span class="dig-ico">✨</span>
+            <span class="dig-qty" style="font-size:1rem;">1 Year License</span>
+            <div class="dig-desc" style="margin-bottom:4px;font-size:0.68rem;">Private မလို · 8 devices ထိသုံးလို့ရ</div>
+            <div class="dig-desc" style="font-size:0.64rem;color:#F87171;margin-bottom:12px;">⚠️ Alight Motion မချိတ်ရသေးသော Gmail လိုပါသည်</div>
+            <div style="margin-bottom:8px;"><span style="font-family:'Cinzel Decorative',serif;font-size:0.85rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">10,000</span> <span style="font-size:0.6rem;color:var(--muted);">ကျပ် Private</span><br><span style="font-family:'Cinzel Decorative',serif;font-size:0.85rem;background:linear-gradient(135deg,var(--purple),#D4BBFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">5,000</span> <span style="font-size:0.6rem;color:var(--muted);">ကျပ် Share</span></div>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+              <button class="btn-dig" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);" onclick="goOrder('Alight Motion 1 Year Private - 10,000 ကျပ်','digital')">🔒 Private</button>
+              <button class="btn-dig" onclick="goOrder('Alight Motion 1 Year Share - 5,000 ကျပ်','digital')">🤝 Share</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CHATGPT PLUS ===== -->
+      <div class="dig-section">
+        <div class="dig-section-hd">
+          <span class="dig-section-icon">🧠</span>
+          <span class="dig-section-title">ChatGPT Plus</span>
+          <span class="dig-section-tag">1 Month</span>
+        </div>
+        <div class="chatgpt-cards">
+          <div class="gpt-card gpt-share">
+            <span class="gpt-ico">🤝</span>
+            <span class="gpt-type gpt-share-tag">Personal Share</span>
+            <div class="gpt-name">ChatGPT Plus</div>
+            <div class="gpt-desc">Shared Account · GPT-4 · DALL·E 3 ပါ</div>
+            <span class="gpt-price-share">20,000</span>
+            <div class="gpt-unit">ကျပ် / ၁ လ</div>
+            <button class="btn-gpt-share" onclick="goOrder('ChatGPT Plus Personal Share 1month - 20,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+          <div class="gpt-card gpt-private">
+            <span class="gpt-ico">🔒</span>
+            <span class="gpt-type gpt-private-tag">Private</span>
+            <div class="gpt-name">ChatGPT Plus</div>
+            <div class="gpt-desc">Private Account · GPT-4 · သင်တစ်ယောက်တည်းသုံး</div>
+            <span class="gpt-price-priv">40,000</span>
+            <div class="gpt-unit">ကျပ် / ၁ လ</div>
+            <button class="btn-gpt-priv" onclick="goOrder('ChatGPT Plus Private 1month - 40,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CAPCUT ===== -->
+      <div class="dig-section">
+        <div class="dig-section-hd">
+          <span class="dig-section-icon">✂️</span>
+          <span class="dig-section-title">CapCut Premium</span>
+          <span class="dig-section-tag">1 Month</span>
+        </div>
+        <div style="max-width:340px;margin:0 auto;">
+          <div class="cap-card">
+            <span class="cap-ico">✂️</span>
+            <div class="cap-name">CapCut Premium · ၁ လ</div>
+            <div class="cap-feats">
+              <div class="cap-feat">Premium Effects &amp; Filters အားလုံး</div>
+              <div class="cap-feat">Watermark မပါ Export</div>
+              <div class="cap-feat">AI Features (Background Remove, etc.)</div>
+              <div class="cap-feat">4K Export Quality</div>
+              <div class="cap-feat">Premium Templates အားလုံး</div>
+              <div class="cap-feat">Cloud Storage 100GB</div>
+            </div>
+            <span class="cap-price">10,000</span>
+            <div class="cap-unit">ကျပ် / ၁ လ</div>
+            <button class="btn-purple" onclick="goOrder('CapCut Premium ၁ လ - 10,000 ကျပ်','digital')">မှာရန်</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <div class="order-sec"><div class="sec-header"><span class="sec-tag" style="color:var(--purple);">Order</span><h2 class="sec-title" style="font-size:clamp(1.3rem,4vw,2rem);">Order တင်ရန်</h2><div class="sec-line"></div></div><div id="dig-form"></div></div>
+  <footer style="background:var(--dark);"><span class="f-logo">Bayinnaung369</span><button class="back-footer-btn" style="border-color:rgba(167,139,255,0.2);color:var(--purple);" onclick="goPage('home')">🏠 Home သို့ ပြန်သွားရန်</button></footer>
+</div>
+
+<script>
+// CURSOR
+var cur=document.getElementById('cur'),curf=document.getElementById('curf');
+document.addEventListener('mousemove',function(e){
+  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+  setTimeout(function(){curf.style.left=e.clientX+'px';curf.style.top=e.clientY+'px';},80);
+});
+
+// DIAMOND GRID
+var dias=[{a:11,p:'900'},{a:22,p:'1,700'},{a:33,p:'2,500'},{a:44,p:'3,300'},{a:55,p:'3,600'},{a:86,p:'4,950',h:1},{a:110,p:'7,500'},{a:172,p:'10,500',h:1},{a:257,p:'15,300',h:1},{a:343,p:'20,600'},{a:429,p:'25,500'},{a:514,p:'30,300'},{a:600,p:'35,800'},{a:706,p:'41,000',h:1},{a:878,p:'52,000'},{a:963,p:'56,500'},{a:1049,p:'62,500'},{a:1412,p:'83,500'},{a:2195,p:'125,000'},{a:3688,p:'206,000'},{a:5532,p:'310,000'},{a:9288,p:'521,000'}];
+var dg=document.getElementById('diaGrid');
+dias.forEach(function(d){
+  var hotBadge=d.h?'<span class="hot-b">HOT</span>':'';
+  var hotClass=d.h?' hot':'';
+  var pkg=d.a+' Diamonds - '+d.p+' ကျပ်';
+  var btnEl='<button class="btn-xs" onclick="goOrder(this.getAttribute(\'data-pkg\'),\'mlbb\')" data-pkg="'+pkg+'">မှာရန်</button>';
+  dg.innerHTML+='<div class="d-card'+hotClass+'">'+hotBadge+'<div class="d-ico">💎</div><div class="d-amt">'+d.a.toLocaleString()+'</div><div class="d-lbl">Diamonds</div><div class="d-prc">'+d.p+'</div><div class="d-ks">ကျပ်</div>'+btnEl+'</div>';
+});
+
+// AUTH
+var USERS_KEY='b369_users';
+var SESSION_KEY='b369_session';
+
+function getUsers(){
+  try{ return JSON.parse(localStorage.getItem(USERS_KEY)||'[]'); }catch(e){ return []; }
+}
+function saveUsers(u){ localStorage.setItem(USERS_KEY,JSON.stringify(u)); }
+function getSession(){ return localStorage.getItem(SESSION_KEY)||null; }
+function saveSession(u){ localStorage.setItem(SESSION_KEY,u); }
+function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+
+function switchAuthTab(tab){
+  document.getElementById('tab-login').classList.toggle('active',tab==='login');
+  document.getElementById('tab-register').classList.toggle('active',tab==='register');
+  document.getElementById('form-login').classList.toggle('active',tab==='login');
+  document.getElementById('form-register').classList.toggle('active',tab==='register');
+  var ids=['login-err','login-ok','reg-err','reg-ok'];
+  for(var i=0;i<ids.length;i++){
+    var el=document.getElementById(ids[i]);
+    if(el){ el.style.display='none'; el.textContent=''; }
+  }
+}
+
+function showMsg(id,msg){
+  var el=document.getElementById(id);
+  if(!el){ return; }
+  el.textContent=msg;
+  el.style.display='block';
+  var others=id.startsWith('login')?['login-err','login-ok']:['reg-err','reg-ok'];
+  for(var i=0;i<others.length;i++){
+    if(others[i]!==id){
+      var e2=document.getElementById(others[i]);
+      if(e2){ e2.style.display='none'; }
+    }
+  }
+}
+
+function doRegister(){
+  var u=(document.getElementById('reg-user').value||'').trim();
+  var p=document.getElementById('reg-pass').value||'';
+  var p2=document.getElementById('reg-pass2').value||'';
+  if(!u){ showMsg('reg-err','⚠️ Username ရိုက်ထည့်ပေးပါ'); return; }
+  if(u.length<3){ showMsg('reg-err','⚠️ Username အနည်းဆုံး ၃ လုံးရှိရပါမည်'); return; }
+  if(!p){ showMsg('reg-err','⚠️ Password ရိုက်ထည့်ပေးပါ'); return; }
+  if(p.length<6){ showMsg('reg-err','⚠️ Password အနည်းဆုံး ၆ လုံးရှိရပါမည်'); return; }
+  if(p!==p2){ showMsg('reg-err','⚠️ Password နှစ်ခု မတူညီပါ'); return; }
+  var users=getUsers();
+  var taken=false;
+  for(var i=0;i<users.length;i++){
+    if(users[i].username.toLowerCase()===u.toLowerCase()){ taken=true; break; }
+  }
+  if(taken){ showMsg('reg-err','❌ ဒီ Username တူနေပါတယ် — အခြားနာမည် ရွေးပေးပါ'); return; }
+  users.push({username:u,password:p,createdAt:new Date().toISOString()});
+  saveUsers(users);
+  saveSession(u);
+  showMsg('reg-ok','✅ Register အောင်မြင်ပါပြီ! ကြိုဆိုပါသည် '+u);
+  setTimeout(function(){
+    updateAuthUI();
+    document.querySelectorAll('.page').forEach(function(pg){ pg.classList.remove('active'); });
+    document.getElementById('page-home').classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  },1000);
+}
+
+function doLogin(){
+  var u=(document.getElementById('login-user').value||'').trim();
+  var p=document.getElementById('login-pass').value||'';
+  if(!u||!p){ showMsg('login-err','⚠️ Username နှင့် Password ဖြည့်ပေးပါ'); return; }
+  var users=getUsers();
+  var found=null;
+  for(var i=0;i<users.length;i++){
+    if(users[i].username.toLowerCase()===u.toLowerCase()&&users[i].password===p){ found=users[i]; break; }
+  }
+  if(!found){ showMsg('login-err','❌ Username (သို့) Password မှားနေပါသည်'); return; }
+  saveSession(found.username);
+  updateAuthUI();
+  showMsg('login-ok','✅ Login အောင်မြင်ပါပြီ! ကြိုဆိုပါသည် '+found.username);
+  setTimeout(function(){
+    document.querySelectorAll('.page').forEach(function(pg){ pg.classList.remove('active'); });
+    document.getElementById('page-home').classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  },800);
+}
+
+function logout(){
+  clearSession();
+  updateAuthUI();
+  document.querySelectorAll('.page').forEach(function(pg){ pg.classList.remove('active'); });
+  document.getElementById('page-auth').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateAuthUI(){
+  var session=getSession();
+  var topBar=document.getElementById('authTopBar');
+  var welcome=document.getElementById('authWelcome');
+  var nameEl=document.getElementById('welcomeName');
+  if(session){
+    if(topBar){ topBar.style.display='none'; }
+    if(welcome){ welcome.style.display='flex'; }
+    if(nameEl){ nameEl.textContent=session; }
+  }else{
+    if(topBar){ topBar.style.display='flex'; }
+    if(welcome){ welcome.style.display='none'; }
+  }
+}
+
+// PAGE NAV
+function goPage(id){
+  if(id!=='auth'&&!getSession()){
+    document.querySelectorAll('.page').forEach(function(pg){ pg.classList.remove('active'); });
+    document.getElementById('page-auth').classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+  document.querySelectorAll('.page').forEach(function(pg){ pg.classList.remove('active'); });
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goOrder(pkg,page){
+  if(!getSession()){ goPage('auth'); return; }
+  goPage(page);
+  setTimeout(function(){
+    var fid=page==='tiktok'?'tik-form':page==='digital'?'dig-form':'mlbb-form';
+    var sel=document.getElementById(fid+'s');
+    if(sel){ sel.value=pkg; }
+    var formEl=document.getElementById(fid);
+    if(formEl){ formEl.scrollIntoView({behavior:'smooth',block:'center'}); }
+  },450);
+}
+
+// BUILD FORM
+function buildForm(id,opts,color,idLabel){
+  var btnBg,btnColor;
+  if(color==='var(--gold)'){
+    btnBg='linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light))';
+    btnColor='var(--black)';
+  }else if(color==='var(--tik)'){
+    btnBg='linear-gradient(135deg,var(--tik-dark),var(--tik))';
+    btnColor='var(--black)';
+  }else{
+    btnBg='linear-gradient(135deg,var(--purple-dark),var(--purple))';
+    btnColor='white';
+  }
+  var optHTML='<option value="">— ရွေးချယ်ပါ —</option>';
+  for(var oi=0;oi<opts.length;oi++){ optHTML+='<option>'+opts[oi]+'</option>'; }
+
+  var h='<div class="order-form">';
+  h+='<div class="f-title" style="color:'+color+';">📋 Order Form</div>';
+  h+='<div class="fg"><label>KBZ or Wave</label><input type="text" id="F_'+id+'_n" placeholder="KBZ / Wave နံပါတ်"></div>';
+  h+='<div class="fg"><label>ချက်ချင်းဆက်သွယ်လို့ရမည့် အကောင့်တစ်ခုခု</label><input type="text" id="F_'+id+'_p" placeholder="Telegram / Facebook / Viber"></div>';
+  h+='<div class="fg"><label>Service ရွေးပါ</label><select id="F_'+id+'_s">'+optHTML+'</select></div>';
+  h+='<div class="fg"><label>'+idLabel+'</label><input type="text" id="F_'+id+'_u" placeholder="'+idLabel+'"></div>';
+  h+='<div class="fg"><label>အရေအတွက် / မှတ်ချက်</label><textarea id="F_'+id+'_t" rows="3" placeholder="ဥပမာ: 1 လ / Like 3000 ..."></textarea></div>';
+  h+='<div class="fg"><label>ငွေလွှဲပြေစာ (Screenshot)</label>';
+  h+='<input type="file" id="F_'+id+'_i" accept="image/*" style="display:none" onchange="showPrev(\''+id+'\')">';
+  h+='<input type="file" id="F_'+id+'_i2" accept="image/*" capture="camera" style="display:none" onchange="showPrev(\''+id+'\')">';
+  h+='<div style="display:flex;flex-direction:column;gap:8px;">';
+  h+='<button type="button" onclick="document.getElementById(\'F_'+id+'_i2\').click()" style="width:100%;padding:11px;background:rgba(255,255,255,0.03);border:1px dashed rgba(212,175,55,0.3);border-radius:10px;color:var(--gold);font-size:0.78rem;cursor:pointer;">📷 ကင်မရာဖြင့် ရိုက်ရန်</button>';
+  h+='<button type="button" onclick="document.getElementById(\'F_'+id+'_i\').click()" style="width:100%;padding:11px;background:rgba(255,255,255,0.03);border:1px dashed rgba(212,175,55,0.3);border-radius:10px;color:var(--gold-light);font-size:0.78rem;cursor:pointer;">🖼️ Gallery မှ ရွေးရန်</button>';
+  h+='<div id="F_'+id+'_prev" style="display:none;padding:8px;text-align:center;font-size:0.72rem;color:#4ADE80;">✅ ဓာတ်ပုံ ရွေးပြီးပါပြီ</div>';
+  h+='</div></div>';
+  h+='<button class="f-submit" id="F_'+id+'_btn" onclick="sub(\''+id+'\')" style="background:'+btnBg+';color:'+btnColor+';">✅ Order တင်ရန်</button>';
+  h+='</div>';
+  document.getElementById(id).innerHTML=h;
+  var sess=localStorage.getItem(SESSION_KEY);
+  if(sess){
+    var ni=document.getElementById('F_'+id+'_n');
+    if(ni){ ni.value=sess; }
+  }
+}
+
+buildForm('mlbb-form',['Weekly Pass - 6,000 ကျပ်','Starlight Normal - 12,000 ကျပ် (၇ ရက်)','Twilight Pass - 33,600 ကျပ်','2× Diamond 50+50=100 - 3,300 ကျပ်','2× Diamond 150+150=300 - 10,500 ကျပ်','2× Diamond 250+250=500 - 15,900 ကျပ်','2× Diamond 500+500=1000 - 32,000 ကျပ်','11 Diamonds - 900 ကျပ်','22 Diamonds - 1,700 ကျပ်','33 Diamonds - 2,500 ကျပ်','44 Diamonds - 3,300 ကျပ်','55 Diamonds - 3,600 ကျပ်','86 Diamonds - 4,950 ကျပ်','110 Diamonds - 7,500 ကျပ်','172 Diamonds - 10,500 ကျပ်','257 Diamonds - 15,300 ကျပ်','343 Diamonds - 20,600 ကျပ်','429 Diamonds - 25,500 ကျပ်','514 Diamonds - 30,300 ကျပ်','600 Diamonds - 35,800 ကျပ်','706 Diamonds - 41,000 ကျပ်','878 Diamonds - 52,000 ကျပ်','963 Diamonds - 56,500 ကျပ်','1049 Diamonds - 62,500 ကျပ်','1412 Diamonds - 83,500 ကျပ်','2195 Diamonds - 125,000 ကျပ်','3688 Diamonds - 206,000 ကျပ်','5532 Diamonds - 310,000 ကျပ်','9288 Diamonds - 521,000 ကျပ်'],'var(--gold)','MLBB Game ID');
+buildForm('tik-form',['TikTok Like 1000 (ပြန်မကျ+View တက်) - 3,500 ကျပ်','TikTok Like 1000 (ပြန်မကျ) - 2,500 ကျပ်','TikTok Like 1000 (စျေးချို) - 500 ကျပ်','TikTok View 10000 (ပြန်မကျတစ်သက်သာ) - 3,000 ကျပ်','TikTok View 10000 (စျေးချို) - 1,000 ကျပ်','TikTok Follow 100 (ပြန်မကျ) - 2,000 ကျပ်'],'var(--tik)','TikTok Username / Video Link');
+buildForm('dig-form',['Telegram Account 1acc - 3,000 ကျပ်','Telegram Account 10acc - 25,000 ကျပ်','Gmail Account 1acc - 3,000 ကျပ်','Gmail Account 10acc - 25,000 ကျပ်','Canva Education Lifetime Premium - 10,000 ကျပ်','Alight Motion 1 Year Private - 10,000 ကျပ်','Alight Motion 1 Year Share - 5,000 ကျပ်','ChatGPT Plus Personal Share 1month - 20,000 ကျပ်','ChatGPT Plus Private 1month - 40,000 ကျပ်','CapCut Premium ၁ လ - 10,000 ကျပ်'],'var(--purple)','Email / Gmail လိပ်စာ');
+
+// FILE HELPERS
+function showPrev(id){
+  var el=document.getElementById('F_'+id+'_prev');
+  if(el){ el.style.display='block'; }
+}
+function getPhoto(id){
+  var c=document.getElementById('F_'+id+'_i2');
+  var g=document.getElementById('F_'+id+'_i');
+  if(c&&c.files&&c.files.length>0){ return c.files[0]; }
+  if(g&&g.files&&g.files.length>0){ return g.files[0]; }
+  return null;
+}
+
+// SUBMIT
+async function sub(id){
+  if(!getSession()){ alert('⚠️ မှာယူရန် Login ဝင်ပေးပါ'); goPage('auth'); return; }
+  var n=document.getElementById('F_'+id+'_n').value.trim();
+  var ph=document.getElementById('F_'+id+'_p').value.trim();
+  var pk=document.getElementById('F_'+id+'_s').value;
+  var u=document.getElementById('F_'+id+'_u').value.trim();
+  var t=document.getElementById('F_'+id+'_t').value.trim();
+  var photo=getPhoto(id);
+  if(!n||!ph||!pk||!u){ alert('⚠️ လိုအပ်သော အချက်အလက်များ အကုန်ဖြည့်ပေးပါ။'); return; }
+  if(!photo){ alert('⚠️ ငွေလွှဲပြေစာ ဓာတ်ပုံ ထည့်ပေးရန် လိုအပ်ပါသည်။'); return; }
+
+  var btn=document.getElementById('F_'+id+'_btn');
+  var origHTML=btn?btn.innerHTML:'';
+  if(btn){ btn.disabled=true; btn.innerHTML='⏳ လုပ်ဆောင်နေပါသည်...'; btn.style.opacity='0.75'; }
+
+  var botToken='8594338354:AAHDW4JZGf9f6HjoqHsDrTW9LaPBVEK25mw';
+  var chatId='@bayinnaung368';
+  var acc=getSession()||'Unknown';
+  var msg='*🛒 Order အသစ်တက်လာပါပြီ!*\n'
+        +'-------------------------\n'
+        +'*Account:* '+acc+'\n'
+        +'*KBZ/Wave:* '+n+'\n'
+        +'*ဆက်သွယ်ရန်:* '+ph+'\n'
+        +'*Service:* '+pk+'\n'
+        +'*ID/User:* '+u+'\n'
+        +'*မှတ်ချက်:* '+(t||'မရှိပါ')+'\n'
+        +'-------------------------\n'
+        +'_Bayinnaung369 Shop_';
+  var fd=new FormData();
+  fd.append('chat_id',chatId);
+  fd.append('caption',msg);
+  fd.append('parse_mode','Markdown');
+  fd.append('photo',photo);
+  try{
+    var res=await fetch('https://api.telegram.org/bot'+botToken+'/sendPhoto',{method:'POST',body:fd});
+    var json=await res.json();
+    if(json.ok){
+      alert('✅ Order အောင်မြင်စွာ တင်ပြီးပါပြီ။');
+      location.reload();
+    }else{
+      if(btn){ btn.disabled=false; btn.innerHTML=origHTML; btn.style.opacity='1'; }
+      alert('❌ Telegram Error '+json.error_code+': '+json.description);
+    }
+  }catch(e){
+    if(btn){ btn.disabled=false; btn.innerHTML=origHTML; btn.style.opacity='1'; }
+    alert('❌ Network Error: '+e.message);
+  }
+}
+
+// INIT
+(function(){
+  if(!getSession()){
+    document.querySelectorAll('.page').forEach(function(pg){ pg.classList.remove('active'); });
+    document.getElementById('page-auth').classList.add('active');
+  }else{
+    document.querySelectorAll('.page').forEach(function(pg){ pg.classList.remove('active'); });
+    document.getElementById('page-home').classList.add('active');
+    updateAuthUI();
+  }
+})();
+
+</script>
+
+<!-- ===== AUTH TOP BAR ===== -->
+<div class="auth-top-btn" id="authTopBar" style="display:none;">
+  <button onclick="goPage('auth')">👤 Login / Register</button>
+</div>
+<div class="auth-welcome" id="authWelcome">
+  <span>👤</span>
+  <span class="auth-welcome-name" id="welcomeName"></span>
+  <button class="auth-welcome-out" onclick="logout()">ထွက်မည်</button>
+</div>
+
+
+</body>
+</html>
